@@ -3,9 +3,59 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=1080, initial-scale=1.0">
+    <link href="styles.css" rel="stylesheet">
     <title>Document</title>
 </head>
 <body>
-    <h1>Hello world!</h1>
+    <div class="maindiv">
+        <h1>Fedora GNU/Linux setup Check Point Mobile Access VPN</h1>
+        <p>
+            This is a step-by-step tutorial to setup your Fedora GNU/Linux machine with all the required dependencies to work with Check Point Mobile Access VPN.
+        </p>
+
+        <h2>Introduction</h2>
+        <p>If you have fedora 38 it must be hard to setup <b>Check Point Mobile Access VPN</b> on the fly. I created this guide so as not to forget how the setup is done myself, but if it will be useful to you, then I will be glad.</p>
+
+        <h2>Dependencies</h2>
+        <p>To setup this, you need to install this packages in Fedora 38.</p>
+        <h3 class="code">
+            sudo dnf install nss-tools openssl xterm<br/>
+            sudo dnf install glibc.i686 pam.i686 libX11.i686 libnsl.i686
+        </h3>
+        <p>You also must download <a target="_blank" href="http://mirror.centos.org/centos/7/os/x86_64/Packages/compat-libstdc++-33-3.2.3-72.el7.i686.rpm"><b>compat-libstdc++-33.rpm</b></a> package and install that.</p>
+        <h3 class="code">
+            sudo dnf install ./compat-libstdc++-33-3.2.3-72.el7.i686.rpm
+        </h3>
+
+        <p>You also have to install java.</p>
+        <h3 class="code">
+            curl -s "https://get.sdkman.io" | bash
+            source "$HOME/.sdkman/bin/sdkman-init.sh"
+        </h3>
+        <p>After installing sdkman you should find the name of java sdk package. Choose the appropriate version (version 8) from the list.</p>
+        <h3 class="code">
+            sdk list java
+        </h3>
+        <p>... and install it.</p>
+        <h3 class="code">
+            sdk install java 8.0.232-open
+        </h3>
+        
+        <p>After installing java do login to the Check Point Mobile Access VPN website. Try to connect. The website will offer you to download cshell_install.sh. Download it and install to your system.</p>
+        <h3 class="code">
+            bash ./cshell_install.sh
+        </h3>
+
+        <p>If cshell_install script installed successfully, the website will try to connect to the checkpoint vpn. <br/>
+            It is possible that you will have to manually stop the java process and restart the launcher.
+        </p>
+        <h3 class="code">
+            ps -A | grep java
+            kill [your pid]
+            /bin/cshell/launcher
+        </h3>
+        
+        <p>That's it!</p>
+    </div>
 </body>
 </html>

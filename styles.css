@@ -1,0 +1,28 @@
+body {
+    color: #24292e;
+    background-color: #eaecef;
+}
+
+h1 {
+    text-align: center;
+}
+
+h1,h2:after
+{
+    content:' ';
+    display:block;
+    border-bottom:1px solid gray;
+    padding-bottom: 0.3em;
+    font-size: 2em;
+}
+
+.code {
+    color: #0086B3;
+    font-weight: bold;
+    padding: 16px;
+    overflow: auto;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #f6f8fa;
+    border-radius: 3px;
+}
